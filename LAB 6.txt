@@ -1,0 +1,375 @@
+1. Create a class called Person with attributes such as name and age. Derive a class called Student from Person that adds an attribute studentId. Write a program to demonstrate single inheritance by creating objects of both classes and displaying their attributes?
+
+ANS:
+
+// Person class
+class Person {
+    protected String name;
+    protected int age;
+
+    public Person(Se, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+// Student class derived from Person
+class Student extends Person {
+    private String studentId;
+
+    public Student(String name, int age, String studentId) {
+        super(name, age);
+        this.studentId = studentId;
+    }
+
+    public String getStudentId() {
+        return studentId;
+    }
+}
+
+// Main class for demonstration
+public class Main {
+    public static void main(String[] args) {
+        // Create a Person object
+        Person personObj = new Person("John Doe", 25);
+
+        // Create a Student object
+        Student studentObj = new Student("Alice Smith", 20, "2023001");
+
+        // Display attributes of Person
+        System.out.println("Person attributes:");
+        System.out.println("Name: " + personObj.getName());
+        System.out.println("Age: " + personObj.getAge());
+
+        // Display attributes of Student
+        System.out.println("\nStudent attributes:");
+        System.out.println("Name: " + studentObj.getName());
+        System.out.println("Age: " + studentObj.getAge());
+        System.out.println("Student ID: " + studentObj.getStudentId());
+    }
+}
+
+
+OUTPUT:
+Person attributes:
+Name: priya
+Age: 25
+
+Student attributes:
+Name: Nikky
+Age: 20
+Student ID: 2000145
+
+
+Q2. Design a class called Shape with methods to calculate the area and perimeter. Derive classes like Circle, Rectangle, and Triangle from Shape. Write a program to create objects of these classes and compute their areas and perimeters ?
+
+ANS:
+
+
+import java.util.Scanner;
+
+// Shape class
+class Shape {
+    public double calculateArea() {
+        return 0.0;
+    }
+
+    public double calculatePerimeter() {
+        return 0.0;
+    }
+}
+
+// Circle class derived from Shape
+class Circle extends Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+
+// Rectangle class derived from Shape
+class Rectangle extends Shape {
+    private double length;
+    private double width;
+
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    public double calculateArea() {
+        return length * width;
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 2 * (length + width);
+    }
+}
+
+// Triangle class derived from Shape
+class Triangle extends Shape {
+    private double sideA;
+    private double sideB;
+    private double sideC;
+
+    public Triangle(double sideA, double sideB, double sideC) {
+        this.sideA = sideA;
+        this.sideB = sideB;
+        this.sideC = sideC;
+    }
+
+    @Override
+    public double calculateArea() {
+        // Using Heron's formula to calculate the area of the triangle
+        double s = (sideA + sideB + sideC) / 2;
+        return Math.sqrt(s * (s - sideA) * (s - sideB) * (s - sideC));
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return sideA + sideB + sideC;
+    }
+}
+
+// Main class for demonstration
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get input for Circle
+        System.out.print("Enter the radius of the circle: ");
+        double circleRadius = scanner.nextDouble();
+        Circle circleObj = new Circle(circleRadius);
+
+        // Get input for Rectangle
+        System.out.print("Enter the length of the rectangle: ");
+        double rectangleLength = scanner.nextDouble();
+        System.out.print("Enter the width of the rectangle: ");
+        double rectangleWidth = scanner.nextDouble();
+        Rectangle rectangleObj = new Rectangle(rectangleLength, rectangleWidth);
+
+        // Get input for Triangle
+        System.out.print("Enter the length of side A of the triangle: ");
+        double triangleSideA = scanner.nextDouble();
+        System.out.print("Enter the length of side B of the triangle: ");
+        double triangleSideB = scanner.nextDouble();
+        System.out.print("Enter the length of side C of the triangle: ");
+        double triangleSideC = scanner.nextDouble();
+        Triangle triangleObj = new Triangle(triangleSideA, triangleSideB, triangleSideC);
+
+        scanner.close();
+
+        // Compute and display areas and perimeters
+        System.out.println("Circle:");
+        System.out.println("Area: " + circleObj.calculateArea());
+        System.out.println("Perimeter: " + circleObj.calculatePerimeter());
+
+        System.out.println("\nRectangle:");
+        System.out.println("Area: " + rectangleObj.calculateArea());
+        System.out.println("Perimeter: " + rectangleObj.calculatePerimeter());
+
+        System.out.println("\nTriangle:");
+        System.out.println("Area: " + triangleObj.calculateArea());
+        System.out.println("Perimeter: " + triangleObj.calculatePerimeter());
+    }
+}
+
+OUTPUT:
+
+Enter the radius of the circle: 5
+Enter the length of the rectangle: 6
+Enter the width of the rectangle: 4
+Enter the length of side A of the triangle: 3
+Enter the length of side B of the triangle: 4
+Enter the length of side C of the triangle: 5
+
+
+Circle:
+Area: 78.53981633974483
+Perimeter: 31.41592653589793
+
+Rectangle:
+Area: 24.0
+Perimeter: 20.0
+
+Triangle:
+Area: 6.0
+Perimeter: 12.0
+
+
+Q3.Create a base class called Animal with a method named sound(), which prints "Animal makes a sound." Derive classes Cat and Dog from Animal. Override the sound() method in each derived class to print "Cat meows" and "Dog barks" respectively. Write a program to demonstrate method overriding by creating objects of the derived classes and calling the sound() method ?
+
+ANS:
+
+
+// Animal class
+class Animal {
+    public void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+// Cat class derived from Animal
+class Cat extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+// Dog class derived from Animal
+class Dog extends Ani.mal {
+    @Override
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+// Main class for demonstration
+public class Main {
+  .  public static void main(String[] args) {
+        // Create objects of the derived classes
+        Animal animalObj = new Animal();
+        Cat catObj = new Cat();
+        Dog dogObj = new Dog();
+
+        // Demonstrate method overriding
+        animalObj.sound(); // Output: Animal makes a sound
+        catObj.sound();    // Output: Cat meows
+        dogObj.sound();    // Output: Dog barks
+    }
+}
+
+OUTPUT:
+
+Animal makes a sound
+Cat meows
+Dog barks
+
+
+Q4.Design a class called Shape with a method named calculateArea(). Derive classes such as Circle, Rectangle, and Triangle from Shape and override the calculateArea() method in each derived class to compute the area specific to that shape. Write a program to create objects of these classes and invoke the calculateArea() method to calculate and display their respective areas ?
+
+ANS:
+
+import java.util.Scanner;
+// Shape class
+class Shape {
+    public double calculateArea() {
+        return 0.0;
+    }
+}
+
+// Circle class derived from Shape
+class Circle extends Shape {
+    private double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
+
+// Rectangle class derived from Shape
+class Rectangle extends Shape {
+    private double length;
+    private double width;
+
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    public double calculateArea() {
+        return length * width;
+    }
+}
+
+// Triangle class derived from Shape
+class Triangle extends Shape {
+    private double base;
+    private double height;
+
+    public Triangle(double base, double height) {
+        this.base = base;
+        this.height = height;
+    }
+
+    @Override
+    public double calculateArea() {
+        return 0.5 * base * height;
+    }
+}
+
+// Main class for demonstration
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Create objects of the derived classes
+        System.out.print("Enter the radius of the circle: ");
+        double circleRadius = scanner.nextDouble();
+        Circle circleObj = new Circle(circleRadius);
+
+        System.out.print("Enter the length of the rectangle: ");
+        double rectangleLength = scanner.nextDouble();
+        System.out.print("Enter the width of the rectangle: ");
+        double rectangleWidth = scanner.nextDouble();
+        Rectangle rectangleObj = new Rectangle(rectangleLength, rectangleWidth);
+
+        System.out.print("Enter the base of the triangle: ");
+        double triangleBase = scanner.nextDouble();
+        System.out.print("Enter the height of the triangle: ");
+        double triangleHeight = scanner.nextDouble();
+        Triangle triangleObj = new Triangle(triangleBase, triangleHeight);
+
+        scanner.close();
+
+        // Calculate and display areas
+        System.out.println("Circle area: " + circleObj.calculateArea());
+        System.out.println("Rectangle area: " + rectangleObj.calculateArea());
+        System.out.println("Triangle area: " + triangleObj.calculateArea());
+    }
+}
+
+OUTPUT:
+
+Enter the radius of the circle: 5
+Enter the length of the rectangle: 6
+Enter the width of the rectangle: 4
+Enter the base of the triangle: 3
+Enter the height of the triangle: 4
+
+Circle area: 78.53981633974483
+Rectangle area: 24.0
+Triangle area: 6.0
+
+
+
+
+
